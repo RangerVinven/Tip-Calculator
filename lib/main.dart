@@ -12,6 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  String calculateTip(double billAmount, int amountToTip) {
+    return (billAmount * (amountToTip/100)).toStringAsFixed(2);
+  }
+
+  String tipAmount = "";
+  double? billAmount;
+  int? percentageToTip;  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,13 +37,13 @@ class _HomePageState extends State<HomePage> {
                     color: Color.fromARGB(255, 204, 51, 255)
                   ),
                 ),
-                const Expanded(
+                Expanded(
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "£57.00",
+                      tipAmount,
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 50,
                       ),
                     ),
@@ -81,8 +90,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-String calculateTip(double billAmount, int amountToTip) {
-  return (billAmount * (amountToTip/100)).toStringAsFixed(2);
 }
