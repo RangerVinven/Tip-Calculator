@@ -19,8 +19,8 @@ class _HomePageState extends State<HomePage> {
         body: SafeArea(
           child: Center(
             child: Column(
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "Tip Calculator",
                   style: TextStyle(
                     fontSize: 40,
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
                     color: Color.fromARGB(255, 204, 51, 255)
                   ),
                 ),
-                Expanded(
+                const Expanded(
                   child: Align(
                     alignment: Alignment.center,
                     child: Text(
@@ -40,6 +40,39 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                SizedBox(
+                  width: 300,
+                  child: Column(
+                    children: [
+                      const TextField(
+                        decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: "Total Bill Amount"
+                        )
+                      ),
+                      const SizedBox(height: 20),
+                      const TextField(
+                        decoration: InputDecoration(
+                          border: const OutlineInputBorder(),
+                          labelText: "Percentage To Tip"
+                        )
+                      ),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color.fromARGB(255, 204, 51, 255)
+                        ),
+                        child: const Text(
+                          "Calculate",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          ),
+                        ),
+                      )
+                    ],
+                  )
+                )
               ],
             ),
           ),
