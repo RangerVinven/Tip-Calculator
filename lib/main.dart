@@ -17,11 +17,10 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.fromLTRB(5, 0, 0, 0),
-                child: const Text(
+          child: Center(
+            child: Column(
+              children: const [
+                Text(
                   "Tip Calculator",
                   style: TextStyle(
                     fontSize: 40,
@@ -29,17 +28,23 @@ class _HomePageState extends State<HomePage> {
                     color: Color.fromARGB(255, 204, 51, 255)
                   ),
                 ),
-              ),
-              const Text(
-                "£57.00",
-                style: TextStyle(
-                  fontSize: 20,
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "£57.00",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 50,
+                      ),
+                    ),
+                  ),
                 ),
-              )
-            ]
+              ],
+            ),
           ),
         ),
-      )
+      ),
     );
   }
 }
