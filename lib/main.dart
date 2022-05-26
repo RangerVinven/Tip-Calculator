@@ -83,6 +83,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-double calculateTip(double billAmount, int amountToTip) {
-  return double.parse((billAmount * (amountToTip/100)).toStringAsFixed(2));
+String calculateTip(double billAmount, int amountToTip) {
+  return (billAmount * (amountToTip/100)).toStringAsFixed(2);
 }
