@@ -13,13 +13,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  String calculateTip(double billAmount, int amountToTip) {
-    return (billAmount * (amountToTip/100)).toStringAsFixed(2);
+  void calculateTip(double billAmount, double amountToTip) {
+    setState(() {
+      tipAmount = "£" + (billAmount * (amountToTip/100)).toStringAsFixed(2);
+    });
   }
 
   String tipAmount = "";
-  double? billAmount;
-  int? percentageToTip;  
+  double billAmount = 0.0;
+  double percentageToTip = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -53,22 +55,32 @@ class _HomePageState extends State<HomePage> {
                   width: 300,
                   child: Column(
                     children: [
-                      const TextField(
-                        decoration: InputDecoration(
-                        border: OutlineInputBorder(),
-                        labelText: "Total Bill Amount"
-                        )
+                      TextField(
+                        onChanged: (text) {
+                          setState(() {
+                            billAmount = double.parse(text);
+                          });
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                            labelText: "Total Bill Amount"
+                          )
                       ),
                       const SizedBox(height: 20),
-                      const TextField(
-                        decoration: InputDecoration(
-                          border: const OutlineInputBorder(),
+                      TextField(
+                        onChanged: (text) {
+                          percentageToTip = double.parse(text);
+                        },
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
                           labelText: "Percentage To Tip"
                         )
                       ),
                       const SizedBox(height: 20),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          calculateTip(billAmount, percentageToTip);
+                        },
                         style: ElevatedButton.styleFrom(
                           primary: const Color.fromARGB(255, 204, 51, 255)
                         ),
